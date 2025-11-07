@@ -1,80 +1,78 @@
-### 🚀 Salesforce Experience Cloud – Customer Support Portal
+# 🚀 Salesforce Experience Cloud – Customer Support Portal
 
-A lightweight Customer Support Portal built using
-Salesforce Experience Cloud, Lightning Web Components (LWC), and Apex.
+A lightweight Customer Support Portal built using Salesforce Experience Cloud, Lightning Web Components (LWC), and Apex.
+The portal loads correctly inside the org and all LWCs are visible when accessed using authenticated Salesforce credentials.
 
-The portal is accessible within my Salesforce org, and all LWCs load correctly when the site is opened using my authenticated Salesforce credentials.
+## ✅ Features
+**🔹 Lightning Web Components (LWC)**
 
-### ✅ Features
-#### 🔹 Lightning Web Components (LWC)
+Custom LWCs developed in VS Code using the Salesforce Extension Pack.
 
-Custom LWCs were built in VS Code with the Salesforce Extension Pack.
+Included Components
 
-Components Included:
+* 🟦 Case Dashboard – Overview of user cases
 
-🟦 Case Dashboard – Summary of user cases
-🟦 Case Form – A form to fill out cases
-🟩 Customer Case List – Displays cases for the logged-in user
+* 🟦 Case Form – Submit new case requests
 
-All components were deployed to the org and appear correctly in the Experience Cloud site.
+* 🟩 Customer Case List – View all cases for the logged-in user
 
-#### 🔹 Experience Cloud Site
+All components were deployed to Salesforce and appear correctly inside the Experience Cloud site.
 
-Built a Customer Service Experience Cloud site
+**🔹 Experience Cloud Site**
 
-Pages configured using Experience Builder
+Built a Customer Service Portal using Experience Cloud
 
-LWCs are visible when the site is accessed through authenticated Salesforce login
+Pages styled and configured using Experience Builder
 
-Verified using Open Site / Link to Site option
+LWCs are visible only after authenticated login
 
-#### 🔹 Apex Controller (Developer Console)
+Verified using Open Site / Preview options
 
-Backend logic written directly in the Apex Developer Console.
+**🔹 Apex Controller (Developer Console**
 
-Apex functionality includes:
+Backend logic created directly in the Apex Developer Console.
 
-✅ Fetching cases for the logged-in user
+Apex Functionalities
 
-✅ Creating new cases
+* ✅ Fetch cases for the logged-in user
 
-✅ Updating “last viewed” timestamp
+* ✅ Create new Case records
 
-✅ Querying Case and User objects using SOQL
+* ✅ Update “last viewed” timestamps
 
-### 🛠️ Technologies Used
-Technology	Purpose
-LWC (Lightning Web Components)	Frontend UI components
-Apex	Backend logic
-SOQL	Data querying
-Experience Cloud	Portal hosting
-Salesforce Setup	Configuration
-VS Code + Salesforce Extension Pack	Development + Deployment
+* ✅ SOQL queries on Case and User objects
 
-### 🚀 Deployment Notes
+## 🛠️ Tech Stack
+* Technology	Purpose
+* LWC	Frontend UI components
+* Apex	Backend logic
+* SOQL	Database querying
+* Experience Cloud	Portal development
+* Salesforce Setup	Configurations
+* VS Code + Salesforce Extension Pack	Development & Deployment
 
-LWCs created & deployed using VS Code + Salesforce CLI
+## 🚀 Deployment Notes
 
-Apex classes written in Developer Console
+* LWCs created, tested, and deployed using VS Code + Salesforce CLI
 
-Experience Cloud pages managed via Experience Builder
+* Apex classes written and executed in the Developer Console
 
-Site accessed using authenticated view through Open Site
+* Experience Cloud pages managed using Experience Builder
 
-### 📂 Screenshots
+* Site accessed through authenticated Open Site preview
 
-All project screenshots are available in the SF/ folder.
+## 📂 Screenshots
 
-### ✅ Summary
+All screenshots related to this project can be found in the SF/ folder.
 
-This project demonstrates:
+## ✅ Summary
 
-Experience Cloud site creation
+This project showcases:
 
-LWC development & deployment
+* Experience Cloud site creation
 
-Apex backend integrations
+* LWC development and deployment
 
-SOQL data querying
+* Apex + SOQL backend integration
 
-Viewing LWCs inside a Salesforce portal
+* Rendering custom LWCs inside a Salesforce portal
