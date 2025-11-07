@@ -1,79 +1,79 @@
-Salesforce Experience Cloud – Customer Support Portal
+🚀 Salesforce Experience Cloud – Customer Support Portal
 
-This project is a basic Customer Support Portal built using Salesforce Experience Cloud, Lightning Web Components (LWC), and Apex.
-The portal is accessible from my Salesforce org and the LWCs render correctly when the site is opened using my authenticated Salesforce credentials.
+A lightweight Customer Support Portal built using
+Salesforce Experience Cloud, Lightning Web Components (LWC), and Apex.
+
+The portal is accessible within my Salesforce org, and all LWCs load correctly when the site is opened using my authenticated Salesforce credentials.
 
 ✅ Features
-🔹 Lightning Web Components (LWC)
+### 🔹 Lightning Web Components (LWC)
 
-Built custom LWCs in VS Code using Salesforce Extension Pack.
+Custom LWCs were built in VS Code with the Salesforce Extension Pack.
 
-Components used:
+Components Included:
 
-Case Dashboard – displays summary of cases.
+🟦 Case Dashboard – Summary of user cases
 
-Customer Case List – shows list of cases for the logged-in user.
+🟩 Customer Case List – Displays cases for the logged-in user
 
-LWCs are deployed to the org and visible in the portal pages.
+All components were deployed to the org and appear correctly in the Experience Cloud site.
 
 🔹 Experience Cloud Site
 
-Created a Customer Service Experience Cloud site.
+Built a Customer Service Experience Cloud site
 
-The site opens successfully using my own Salesforce login.
+Pages configured using Experience Builder
 
-The custom LWCs appear on the portal pages when viewed via the authenticated session.
+LWCs are visible when the site is accessed through authenticated Salesforce login
+
+Verified using Open Site / Link to Site option
 
 🔹 Apex Controller (Developer Console)
 
-Wrote backend logic using Apex in Developer Console.
+Backend logic written directly in the Apex Developer Console.
 
-The Apex class handles:
+Apex functionality includes:
 
-Fetching cases for the logged-in user
+✅ Fetching cases for the logged-in user
 
-Creating new cases
+✅ Creating new cases
 
-Updating “last viewed” timestamp
+✅ Updating “last viewed” timestamp
 
-SOQL was used inside Apex to query data from Case and User objects.
+✅ Querying Case and User objects using SOQL
 
-✅ Technologies Used
+🛠️ Technologies Used
+Technology	Purpose
+LWC (Lightning Web Components)	Frontend UI components
+Apex	Backend logic
+SOQL	Data querying
+Experience Cloud	Portal hosting
+Salesforce Setup	Configuration
+VS Code + Salesforce Extension Pack	Development + Deployment
+🚀 Deployment Notes
 
-Lightning Web Components (LWC)
+LWCs created & deployed using VS Code + Salesforce CLI
 
-Apex (Developer Console)
+Apex classes written in Developer Console
 
-SOQL
+Experience Cloud pages managed via Experience Builder
 
-Salesforce Experience Cloud
+Site accessed using authenticated view through Open Site
 
-Salesforce Setup & Admin Configuration
+📂 Screenshots
 
-VS Code + Salesforce Extension Pack
-
-✅ Deployment Notes
-
-LWCs were created and deployed using VS Code (Salesforce CLI tools).
-
-Apex was written directly in the Salesforce Developer Console.
-
-Experience Cloud pages were edited using Experience Builder.
-
-The site can be viewed through the “Open Site / Link to Site” option in Salesforce (authenticated view).
-
-✅ Screenshots are available in SF folder
+All project screenshots are available in the SF/ folder.
 
 ✅ Summary
 
 This project demonstrates:
 
-Basic Experience Cloud setup
+Experience Cloud site creation
 
-Usage of Lightning Web Components
+LWC development & deployment
 
-Apex backend integration
+Apex backend integrations
 
-SOQL queries
+SOQL data querying
 
-Viewing deployed components inside a Salesforce site
+Viewing LWCs inside a Salesforce portal
