@@ -6,7 +6,7 @@ Salesforce Experience Cloud, Lightning Web Components (LWC), and Apex.
 The portal is accessible within my Salesforce org, and all LWCs load correctly when the site is opened using my authenticated Salesforce credentials.
 
 ### ✅ Features
-####🔹 Lightning Web Components (LWC)
+#### 🔹 Lightning Web Components (LWC)
 
 Custom LWCs were built in VS Code with the Salesforce Extension Pack.
 
@@ -18,7 +18,7 @@ Components Included:
 
 All components were deployed to the org and appear correctly in the Experience Cloud site.
 
-####🔹 Experience Cloud Site
+#### 🔹 Experience Cloud Site
 
 Built a Customer Service Experience Cloud site
 
@@ -28,7 +28,7 @@ LWCs are visible when the site is accessed through authenticated Salesforce logi
 
 Verified using Open Site / Link to Site option
 
-####🔹 Apex Controller (Developer Console)
+#### 🔹 Apex Controller (Developer Console)
 
 Backend logic written directly in the Apex Developer Console.
 
@@ -42,7 +42,7 @@ Apex functionality includes:
 
 ✅ Querying Case and User objects using SOQL
 
-###🛠️ Technologies Used
+### 🛠️ Technologies Used
 Technology	Purpose
 LWC (Lightning Web Components)	Frontend UI components
 Apex	Backend logic
@@ -51,7 +51,7 @@ Experience Cloud	Portal hosting
 Salesforce Setup	Configuration
 VS Code + Salesforce Extension Pack	Development + Deployment
 
-###🚀 Deployment Notes
+### 🚀 Deployment Notes
 
 LWCs created & deployed using VS Code + Salesforce CLI
 
@@ -61,11 +61,11 @@ Experience Cloud pages managed via Experience Builder
 
 Site accessed using authenticated view through Open Site
 
-###📂 Screenshots
+### 📂 Screenshots
 
 All project screenshots are available in the SF/ folder.
 
-###✅ Summary
+### ✅ Summary
 
 This project demonstrates:
 
