@@ -1,0 +1,9 @@
+.case-item {
+    border-left: 3px solid #1589ee;
+    transition: all 0.2s ease;
+}
+
+.case-item:hover {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transform: translateY(-2px);
+}

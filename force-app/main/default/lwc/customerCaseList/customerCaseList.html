@@ -1,0 +1,74 @@
+<template>
+    <lightning-card title="My Support Cases" icon-name="standard:case">
+        
+        <!-- Card Actions (Refresh Button) -->
+        <div slot="actions">
+            <lightning-button-icon 
+                icon-name="utility:refresh" 
+                alternative-text="Refresh" 
+                title="Refresh Cases"
+                onclick={handleRefresh}>
+            </lightning-button-icon>
+        </div>
+
+        <!-- Loading Spinner -->
+        <template if:true={isLoading}>
+            <lightning-spinner alternative-text="Loading cases..."></lightning-spinner>
+        </template>
+
+        <!-- Error Message -->
+        <template if:true={error}>
+            <div class="slds-text-color_error slds-p-around_medium">
+                {error}
+            </div>
+        </template>
+
+        <!-- Cases List -->
+        <template if:true={cases}>
+            <template if:true={hasCases}>
+                <div class="slds-p-around_medium">
+                    <template for:each={cases} for:item="caseItem">
+                        <div key={caseItem.Id} class="slds-box slds-m-bottom_small case-item">
+                            <div class="slds-grid slds-wrap">
+                                <div class="slds-col slds-size_1-of-1 slds-medium-size_8-of-12">
+                                    <div class="slds-text-heading_small slds-m-bottom_x-small">
+                                        <lightning-icon icon-name="standard:case" size="small" class="slds-m-right_x-small"></lightning-icon>
+                                        {caseItem.Subject}
+                                    </div>
+                                    <div class="slds-text-body_small slds-text-color_weak">
+                                        Case #{caseItem.CaseNumber} • {caseItem.Status}
+                                    </div>
+                                    <div class="slds-m-top_x-small">
+                                        <lightning-badge label={caseItem.Priority}></lightning-badge>
+                                        <lightning-badge label={caseItem.Portal_Status__c} class="slds-m-left_x-small"></lightning-badge>
+                                    </div>
+                                </div>
+                                <div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-text-align_right">
+                                    <div class="slds-text-body_small slds-text-color_weak slds-m-bottom_x-small">
+                                        Created: {caseItem.formattedDate}
+                                    </div>
+                                    <lightning-button 
+                                        label="View Details" 
+                                        variant="brand" 
+                                        data-id={caseItem.Id}
+                                        onclick={handleViewCase}>
+                                    </lightning-button>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+            </template>
+
+            <!-- No Cases Message -->
+            <template if:false={hasCases}>
+                <div class="slds-text-align_center slds-p-around_large">
+                    <lightning-icon icon-name="utility:inbox" size="large" class="slds-m-bottom_small"></lightning-icon>
+                    <p class="slds-text-heading_small">No cases found</p>
+                    <p class="slds-text-color_weak">You don't have any support cases yet.</p>
+                </div>
+            </template>
+        </template>
+
+    </lightning-card>
+</template>

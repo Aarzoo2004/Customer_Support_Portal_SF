@@ -1,0 +1,190 @@
+<template>
+    <lightning-card title="Support Dashboard" icon-name="standard:dashboard">
+        
+        <!-- Refresh Button -->
+        <div slot="actions">
+            <lightning-button-icon 
+                icon-name="utility:refresh" 
+                alternative-text="Refresh Dashboard" 
+                title="Refresh Dashboard"
+                onclick={handleRefresh}>
+            </lightning-button-icon>
+        </div>
+
+        <!-- Loading Spinner -->
+        <template if:true={isLoading}>
+            <div class="slds-p-around_large">
+                <lightning-spinner alternative-text="Loading dashboard..."></lightning-spinner>
+            </div>
+        </template>
+
+        <!-- Error Message -->
+        <template if:true={error}>
+            <div class="slds-p-around_medium">
+                <div class="slds-notify slds-notify_alert slds-alert_error" role="alert">
+                    <span class="slds-assistive-text">error</span>
+                    <h2>{error}</h2>
+                </div>
+            </div>
+        </template>
+
+        <!-- Dashboard Content -->
+        <template if:false={isLoading}>
+            <template if:false={error}>
+                
+                <!-- Statistics Cards -->
+                <div class="slds-p-around_medium">
+                    <div class="slds-grid slds-wrap slds-gutters">
+                        
+                        <!-- Total Cases Card -->
+                        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-4">
+                            <div class="stat-card total-cases">
+                                <div class="stat-icon">
+                                    <lightning-icon icon-name="standard:case" size="medium"></lightning-icon>
+                                </div>
+                                <div class="stat-content">
+                                    <div class="stat-value">{totalCases}</div>
+                                    <div class="stat-label">Total Cases</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Open Cases Card -->
+                        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-4">
+                            <div class="stat-card open-cases">
+                                <div class="stat-icon">
+                                    <lightning-icon icon-name="utility:opened_folder" size="medium"></lightning-icon>
+                                </div>
+                                <div class="stat-content">
+                                    <div class="stat-value">{openCases}</div>
+                                    <div class="stat-label">Open Cases</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- In Progress Cases Card -->
+                        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-4">
+                            <div class="stat-card progress-cases">
+                                <div class="stat-icon">
+                                    <lightning-icon icon-name="utility:rotate" size="medium"></lightning-icon>
+                                </div>
+                                <div class="stat-content">
+                                    <div class="stat-value">{inProgressCases}</div>
+                                    <div class="stat-label">In Progress</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Resolved Cases Card -->
+                        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-4">
+                            <div class="stat-card resolved-cases">
+                                <div class="stat-icon">
+                                    <lightning-icon icon-name="utility:success" size="medium"></lightning-icon>
+                                </div>
+                                <div class="stat-content">
+                                    <div class="stat-value">{resolvedCases}</div>
+                                    <div class="stat-label">Resolved</div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Priority Breakdown -->
+                <div class="slds-p-horizontal_medium slds-p-bottom_medium">
+                    <div class="slds-box">
+                        <h3 class="slds-text-heading_small slds-m-bottom_medium">
+                            <lightning-icon icon-name="utility:priority" size="x-small" class="slds-m-right_x-small"></lightning-icon>
+                            Cases by Priority
+                        </h3>
+                        <div class="slds-grid slds-wrap slds-gutters_small">
+                            
+                            <!-- High Priority -->
+                            <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3">
+                                <div class="priority-bar">
+                                    <div class="priority-header">
+                                        <span class="priority-label">High Priority</span>
+                                        <span class="priority-count">{highPriorityCases}</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill high-priority" style={highPriorityWidth}></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Medium Priority -->
+                            <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3">
+                                <div class="priority-bar">
+                                    <div class="priority-header">
+                                        <span class="priority-label">Medium Priority</span>
+                                        <span class="priority-count">{mediumPriorityCases}</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill medium-priority" style={mediumPriorityWidth}></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Low Priority -->
+                            <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3">
+                                <div class="priority-bar">
+                                    <div class="priority-header">
+                                        <span class="priority-label">Low Priority</span>
+                                        <span class="priority-count">{lowPriorityCases}</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill low-priority" style={lowPriorityWidth}></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Activity Summary -->
+                <div class="slds-p-horizontal_medium slds-p-bottom_medium">
+                    <div class="slds-box">
+                        <h3 class="slds-text-heading_small slds-m-bottom_medium">
+                            <lightning-icon icon-name="utility:activity" size="x-small" class="slds-m-right_x-small"></lightning-icon>
+                            Recent Activity
+                        </h3>
+                        <template if:true={hasRecentCases}>
+                            <ul class="slds-has-dividers_bottom-space">
+                                <template for:each={recentCases} for:item="caseItem">
+                                    <li key={caseItem.Id} class="slds-item slds-p-vertical_small">
+                                        <div class="slds-grid">
+                                            <div class="slds-col slds-size_1-of-1 slds-medium-size_8-of-12">
+                                                <div class="slds-text-body_regular slds-text-color_default">
+                                                    <lightning-icon icon-name="standard:case" size="x-small" class="slds-m-right_x-small"></lightning-icon>
+                                                    <strong>{caseItem.Subject}</strong>
+                                                </div>
+                                                <div class="slds-text-body_small slds-text-color_weak slds-m-top_xx-small">
+                                                    Case #{caseItem.CaseNumber}
+                                                </div>
+                                            </div>
+                                            <div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-text-align_right">
+                                                <lightning-badge label={caseItem.Status}></lightning-badge>
+                                                <div class="slds-text-body_small slds-text-color_weak slds-m-top_xx-small">
+                                                    {caseItem.formattedDate}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </template>
+                            </ul>
+                        </template>
+                        <template if:false={hasRecentCases}>
+                            <div class="slds-text-align_center slds-p-around_medium">
+                                <p class="slds-text-color_weak">No recent activity</p>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+
+            </template>
+        </template>
+
+    </lightning-card>
+</template>

@@ -1,0 +1,112 @@
+/* Stat Cards */
+.stat-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 8px;
+    padding: 1.5rem;
+    color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+.stat-card.total-cases {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.stat-card.open-cases {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.stat-card.progress-cases {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+.stat-card.resolved-cases {
+    background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+}
+
+.stat-icon {
+    flex-shrink: 0;
+}
+
+.stat-content {
+    flex-grow: 1;
+}
+
+.stat-value {
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 0.25rem;
+}
+
+.stat-label {
+    font-size: 0.875rem;
+    opacity: 0.9;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Priority Bars */
+.priority-bar {
+    margin-bottom: 1rem;
+}
+
+.priority-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    font-size: 0.875rem;
+}
+
+.priority-label {
+    font-weight: 600;
+    color: #3e3e3c;
+}
+
+.priority-count {
+    font-weight: 700;
+    color: #706e6b;
+}
+
+.progress-bar {
+    height: 12px;
+    background-color: #f3f2f2;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    border-radius: 6px;
+    transition: width 0.6s ease;
+}
+
+.progress-fill.high-priority {
+    background: linear-gradient(90deg, #f5576c 0%, #f093fb 100%);
+}
+
+.progress-fill.medium-priority {
+    background: linear-gradient(90deg, #ffd89b 0%, #19547b 100%);
+}
+
+.progress-fill.low-priority {
+    background: linear-gradient(90deg, #a8edea 0%, #fed6e3 100%);
+}
+
+/* Recent Activity */
+.slds-has-dividers_bottom-space .slds-item {
+    border-bottom: 1px solid #dddbda;
+}
+
+.slds-has-dividers_bottom-space .slds-item:last-child {
+    border-bottom: none;
+}

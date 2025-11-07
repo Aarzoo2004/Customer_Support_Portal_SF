@@ -1,0 +1,114 @@
+<template>
+    <lightning-card title="Submit a Support Case" icon-name="standard:case">
+        
+        <div class="slds-p-around_medium">
+            
+            <!-- Success Message -->
+            <template if:true={showSuccess}>
+                <div class="slds-notify slds-notify_alert slds-alert_success slds-m-bottom_medium" role="alert">
+                    <span class="slds-assistive-text">success</span>
+                    <lightning-icon icon-name="utility:success" size="x-small" variant="inverse" class="slds-m-right_x-small"></lightning-icon>
+                    <h2>Case submitted successfully! Case Number: {newCaseNumber}</h2>
+                </div>
+            </template>
+
+            <!-- Error Message -->
+            <template if:true={error}>
+                <div class="slds-notify slds-notify_alert slds-alert_error slds-m-bottom_medium" role="alert">
+                    <span class="slds-assistive-text">error</span>
+                    <lightning-icon icon-name="utility:error" size="x-small" variant="inverse" class="slds-m-right_x-small"></lightning-icon>
+                    <h2>{error}</h2>
+                </div>
+            </template>
+
+            <!-- Case Form -->
+            <div class="slds-form" role="form">
+                
+                <!-- Subject Field -->
+                <div class="slds-form-element slds-m-bottom_medium">
+                    <label class="slds-form-element__label" for="subject">
+                        <abbr class="slds-required" title="required">* </abbr>Subject
+                    </label>
+                    <div class="slds-form-element__control">
+                        <lightning-input
+                            name="subject"
+                            value={subject}
+                            placeholder="Brief description of your issue"
+                            onchange={handleSubjectChange}
+                            required
+                            max-length="255">
+                        </lightning-input>
+                    </div>
+                </div>
+
+                <!-- Description Field -->
+                <div class="slds-form-element slds-m-bottom_medium">
+                    <label class="slds-form-element__label" for="description">
+                        <abbr class="slds-required" title="required">* </abbr>Description
+                    </label>
+                    <div class="slds-form-element__control">
+                        <lightning-textarea
+                            name="description"
+                            value={description}
+                            placeholder="Please provide detailed information about your issue"
+                            onchange={handleDescriptionChange}
+                            required
+                            max-length="32000">
+                        </lightning-textarea>
+                    </div>
+                </div>
+
+                <!-- Priority Field -->
+                <div class="slds-form-element slds-m-bottom_medium">
+                    <label class="slds-form-element__label" for="priority">
+                        <abbr class="slds-required" title="required">* </abbr>Priority
+                    </label>
+                    <div class="slds-form-element__control">
+                        <lightning-combobox
+                            name="priority"
+                            value={priority}
+                            placeholder="Select Priority"
+                            options={priorityOptions}
+                            onchange={handlePriorityChange}
+                            required>
+                        </lightning-combobox>
+                    </div>
+                    <div class="slds-form-element__help slds-m-top_x-small">
+                        <template if:true={showPriorityHelp}>
+                            <div class="priority-help">
+                                <strong>Priority Guidelines:</strong>
+                                <ul class="slds-list_dotted slds-m-top_x-small">
+                                    <li><strong>Low:</strong> General questions, minor issues</li>
+                                    <li><strong>Medium:</strong> Important but not urgent issues</li>
+                                    <li><strong>High:</strong> Urgent issues affecting your work</li>
+                                </ul>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="slds-m-top_large slds-text-align_right">
+                    <lightning-button
+                        label="Clear Form"
+                        onclick={handleClear}
+                        class="slds-m-right_small">
+                    </lightning-button>
+                    <lightning-button
+                        variant="brand"
+                        label="Submit Case"
+                        onclick={handleSubmit}
+                        disabled={isSubmitting}>
+                    </lightning-button>
+                </div>
+
+                <!-- Loading Spinner -->
+                <template if:true={isSubmitting}>
+                    <lightning-spinner alternative-text="Submitting case..." size="medium"></lightning-spinner>
+                </template>
+
+            </div>
+        </div>
+
+    </lightning-card>
+</template>
